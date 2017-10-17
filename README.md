@@ -1,2 +1,3 @@
 # cftaskmanager
-Todo App
+React Coding Challenge - Task Managment App
+

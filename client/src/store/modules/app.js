@@ -6,6 +6,7 @@ import axios from 'axios';
 export const GET_ALL_TASKS = 'GET_ALL_TASKS';
 export const POST_ALL_TASKS = 'POST_ALL_TASKS';
 export const TOGGLE_FORM_VISIBILITY = 'TOGGLE_FORM_VISIBILITY';
+export const ADD_NEW_TASK = 'ADD_NEW_TASK';
 
 /** ============================================================
  * Define Initial State
@@ -29,6 +30,11 @@ export default (state = initialState, action) => {
   case POST_ALL_TASKS : 
     return {
       ...state,
+    };
+  case ADD_NEW_TASK:
+    return {
+      ...state,
+      tasks: [...state.tasks, action.task]
     };
   case TOGGLE_FORM_VISIBILITY:
     console.log(state.toggleForm)
@@ -72,6 +78,17 @@ export const showNewTaskForm = () => {
     console.log('Dispatched')
     dispatch({
       type: TOGGLE_FORM_VISIBILITY
+    });
+  };
+};
+
+export const handleSubmit = (values) => {
+  return dispatch => {
+    dispatch({
+      type: ADD_NEW_TASK,
+      task: {
+        name: values.name
+      }
     });
   };
 };

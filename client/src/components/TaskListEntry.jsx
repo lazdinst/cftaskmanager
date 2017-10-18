@@ -7,7 +7,7 @@ const TaskListEntry = (props) => {
       <Card.Content>
         <Button floated='right' icon='trash outline' size='big' />
         <Card.Header>
-          {props.task.name}
+          {props.task.name || 'TASK_NAME'}
         </Card.Header>
       </Card.Content>
     </Card>

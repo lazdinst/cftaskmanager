@@ -5,13 +5,15 @@ import axios from 'axios';
  * ========================================================== */
 export const GET_ALL_TASKS = 'GET_ALL_TASKS';
 export const POST_ALL_TASKS = 'POST_ALL_TASKS';
+export const TOGGLE_FORM_VISIBILITY = 'TOGGLE_FORM_VISIBILITY';
 
 /** ============================================================
  * Define Initial State
  * ========================================================== */
 const initialState = {
   title: 'Tasks',
-  tasks: { }
+  tasks: [],
+  toggleForm: false
 };
 
 /** ============================================================
@@ -22,11 +24,17 @@ export default (state = initialState, action) => {
   case GET_ALL_TASKS:
     return {
       ...state,
-      tasks: action.tasks
+      tasks: action.tasks.tasks
     };
   case POST_ALL_TASKS : 
     return {
       ...state,
+    };
+  case TOGGLE_FORM_VISIBILITY:
+    console.log(state.toggleForm)
+    return {
+      ...state,
+      toggleForm: !state.toggleForm
     };
   default:
     return state;
@@ -56,5 +64,14 @@ export const saveAllTasks = (taskList) => {
           type: POST_ALL_TASKS
         });
       });
+  };
+};
+
+export const showNewTaskForm = () => {
+  return dispatch => {
+    console.log('Dispatched')
+    dispatch({
+      type: TOGGLE_FORM_VISIBILITY
+    });
   };
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Card, Icon } from 'semantic-ui-react'
+import { Button, Card } from 'semantic-ui-react'
 
 const TaskListEntry = (props) => {
   return (
@@ -7,7 +7,7 @@ const TaskListEntry = (props) => {
       <Card.Content>
         <Button floated='right' icon='trash outline' size='big' />
         <Card.Header>
-          Task Name
+          {props.task.name}
         </Card.Header>
       </Card.Content>
     </Card>

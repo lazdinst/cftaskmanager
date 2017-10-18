@@ -1,8 +1,11 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
 import App from './components/App.jsx';
+import store from './store';
 
-/** Render App using React Router. */
-ReactDOM.render((
+render(
+  <Provider store={store}>
     <App />
-), document.getElementById('root'));
+  </Provider>,
+  document.getElementById('root'));

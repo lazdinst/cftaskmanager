@@ -1,11 +1,12 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
 import { Header, Button, Icon } from 'semantic-ui-react';
 
-// Define the main app class
-const TaskListHeader = () => {
+const TaskListHeader = ({title}) => {
   return (
     <Header as='h1'>
-      Task List Title
+      {title}
       <Button floated='right' size='mini'>
         Save
       </Button>
@@ -16,4 +17,10 @@ const TaskListHeader = () => {
   );
 }
 
-export default TaskListHeader;
+const mapStateToProps = (state) => ({
+  title: state.app.title
+});
+
+export default connect(
+  mapStateToProps
+)(TaskListHeader);

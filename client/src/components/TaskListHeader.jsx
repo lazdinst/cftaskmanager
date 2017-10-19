@@ -2,19 +2,18 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import SimpleForm from './SimpleForm.jsx';
+import TaskForm from './TaskForm.jsx';
 
 import { Header, Button, Icon } from 'semantic-ui-react';
 
-import { showNewTaskForm, handleSubmit } from '../store/modules/app';
+import { showNewTaskForm, saveAllTasks, handleSubmit } from '../store/modules/app';
 
-const TaskListHeader = ({title, toggleForm, handleSubmit, showNewTaskForm}) => {
-  let ShowForm = toggleForm ? <SimpleForm  onSubmit={handleSubmit}/> : '';
+const TaskListHeader = ({tasks, title, toggleForm, handleSubmit, showNewTaskForm, saveAllTasks}) => {
+  let ShowForm = toggleForm ? <TaskForm  onSubmit={handleSubmit}/> : '';
   return (
     <Header as='h1'>
-      {title}
-      <button onClick={handleSubmit}>AddTodo</button>
-      <Button floated='right' size='mini'>
+      {title || 'TASK_TITLE'}
+      <Button floated='right' size='mini' onClick={() => {saveAllTasks(tasks)}}>
         Save
       </Button>
       <Button floated='right' size='mini' onClick={() => {showNewTaskForm()}}>
@@ -27,11 +26,13 @@ const TaskListHeader = ({title, toggleForm, handleSubmit, showNewTaskForm}) => {
 
 const mapStateToProps = (state) => ({
   title: state.app.title,
-  toggleForm: state.app.toggleForm,
+  tasks: state.app.tasks,
+  toggleForm: state.app.toggleForm
 });
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({
   showNewTaskForm,
+  saveAllTasks,
   handleSubmit
 }, dispatch);
 

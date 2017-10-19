@@ -1,12 +1,14 @@
 import axios from 'axios';
+axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 /** ============================================================
  * Define Actions
  * ========================================================== */
 export const GET_ALL_TASKS = 'GET_ALL_TASKS';
-export const POST_ALL_TASKS = 'POST_ALL_TASKS';
+export const SAVE_ALL_TASKS = 'SAVE_ALL_TASKS';
 export const TOGGLE_FORM_VISIBILITY = 'TOGGLE_FORM_VISIBILITY';
 export const ADD_NEW_TASK = 'ADD_NEW_TASK';
+export const DELETE_TASK = 'DELETE_TASK';
 
 /** ============================================================
  * Define Initial State
@@ -14,6 +16,7 @@ export const ADD_NEW_TASK = 'ADD_NEW_TASK';
 const initialState = {
   title: 'Tasks',
   tasks: [],
+  nextTaskId: 0,
   toggleForm: false
 };
 
@@ -25,19 +28,25 @@ export default (state = initialState, action) => {
   case GET_ALL_TASKS:
     return {
       ...state,
-      tasks: action.tasks.tasks
+      tasks: action.tasks,
+      nextTaskId: action.nextTaskId
     };
-  case POST_ALL_TASKS : 
+  case DELETE_TASK:
+    return {
+      ...state,
+      tasks : state.tasks.filter((task) => { return task.id !== action.id})
+    };
+  case SAVE_ALL_TASKS : 
     return {
       ...state,
     };
   case ADD_NEW_TASK:
     return {
       ...state,
-      tasks: [...state.tasks, action.task]
+      tasks: [...state.tasks, action.task],
+      toggleForm: !state.toggleForm
     };
   case TOGGLE_FORM_VISIBILITY:
-    console.log(state.toggleForm)
     return {
       ...state,
       toggleForm: !state.toggleForm
@@ -54,28 +63,36 @@ export const getAllTasks = () => {
   return dispatch => {
     return axios.get('http://cfassignment.herokuapp.com/talislazdins/tasks')
       .then(results => {
+        let tasks = results.data.tasks || [];
+        let id = tasks.length ? tasks[tasks.length - 1].id + 1 : 0;
         dispatch({
           type: GET_ALL_TASKS,
-          tasks: results.data
+          tasks: tasks,
+          nextTaskId: id
         });
       });
   };
 };
 
-export const saveAllTasks = (taskList) => {
+var headers = {
+  'Content-Type': 'application/json',
+}
+
+export const saveAllTasks = (tasks) => {
   return dispatch => {
-    return axios.post('http://cfassignment.herokuapp.com/talislazdins/tasks', taskList)
+    return axios.post('http://cfassignment.herokuapp.com/talislazdins/tasks', {tasks: tasks || null})
       .then(results => {
+        console.log('Post success');
         dispatch({
-          type: POST_ALL_TASKS
+          type: SAVE_ALL_TASKS
         });
       });
+      
   };
 };
 
 export const showNewTaskForm = () => {
   return dispatch => {
-    console.log('Dispatched')
     dispatch({
       type: TOGGLE_FORM_VISIBILITY
     });
@@ -83,12 +100,24 @@ export const showNewTaskForm = () => {
 };
 
 export const handleSubmit = (values) => {
-  return dispatch => {
+  return (dispatch, getState) => {
     dispatch({
       type: ADD_NEW_TASK,
       task: {
-        name: values.name
+        id: getState().app.nextTaskId++,
+        name: values.name,
+        createdAt: new Date().toISOString()
       }
+    });
+  };
+};
+
+export const deleteTask = (id) => {
+  console.log('Task ID', id);
+  return dispatch => {
+    dispatch({
+      type: DELETE_TASK,
+      id: id
     });
   };
 };

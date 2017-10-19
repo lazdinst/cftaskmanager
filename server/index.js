@@ -18,8 +18,10 @@ app.get('*', (req, res) => {
   console.log('preloading sate')
   axios.get('http://cfassignment.herokuapp.com/talislazdins/tasks')
     .then(results => {
-      console.log(results.data.tasks);
-      preloadedState.app.tasks = results.data.tasks;
+      let tasks = results.data.tasks || [];
+      preloadedState.app.tasks = tasks;
+      let id = tasks.length ? tasks[0].id + 1 : 0;
+      preloadedState.app.nextTaskId = id;
     })
     .then((events) => {
       res.render('index', {preloadedState});

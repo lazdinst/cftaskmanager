@@ -2,7 +2,7 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { Button, Card } from 'semantic-ui-react'
+import { Button, Card, Label } from 'semantic-ui-react'
 
 import { deleteTask } from '../store/modules/app';
 

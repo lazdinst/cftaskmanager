@@ -39,6 +39,7 @@ export default (state = initialState, action) => {
   case SAVE_ALL_TASKS : 
     return {
       ...state,
+      postSuccess: !state.postSuccess
     };
   case ADD_NEW_TASK:
     return {
@@ -73,10 +74,6 @@ export const getAllTasks = () => {
       });
   };
 };
-
-var headers = {
-  'Content-Type': 'application/json',
-}
 
 export const saveAllTasks = (tasks) => {
   return dispatch => {

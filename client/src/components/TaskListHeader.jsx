@@ -13,7 +13,7 @@ import {
 import TaskForm from './TaskForm.jsx';
   
 import { RIEInput } from 'riek'
-import { Header, Button, Icon, Message } from 'semantic-ui-react';
+import { Header, Button, Icon, Message, Divider } from 'semantic-ui-react';
 
 // TODO: Refactor out of this component
 let select = state => (state.app.tasks)
@@ -36,34 +36,42 @@ const notificationMessage = () => {
 }
 
 function TaskListHeader({tasks, title, toggleForm, toggleTitleInput, postSuccess, handleTaskTitle, handleTitleChange, handleSubmit, showNewTaskForm, saveAllTasks}) {
-  let ShowForm = toggleForm ? <TaskForm  onSubmit={handleSubmit}/> : '';
+  let showForm = toggleForm ? <TaskForm  onSubmit={handleSubmit}/> : '';
   let saveSuccess = false;
   let successMessage = <Message positive>All changes have been saved!</Message>;
   //postSuccess ? setTimeout(() => {console.log('After timer')}, 2000) : console.log('No Timer');
 
   return (
     <div>
-      <h2>
-        <RIEInput
-          value={title || 'TASK_TITLE'}
-          change={handleTitleChange}
-          propName={`title`}
+      <div>
+        <div className='ui transparent input'>
+          <h3>
+          <RIEInput
+            value={title || 'TASK_TITLE'}
+            change={handleTitleChange}
+            propName={`title`}
+          />
+          </h3>
+        </div>
+        <Button
+          basic
+          icon='save'
+          color={'green'}
+          floated='right' 
+          size='mini' 
+          disabled={!stateChanged} 
+          onClick={() => {saveAllTasks(tasks, title)}}
         />
-      </h2>
-      <Button 
-        icon='save'
-        floated='right' 
-        size='mini' 
-        disabled={!stateChanged} 
-        onClick={() => {saveAllTasks(tasks, title)}}
-      />
-      <Button 
-        icon='plus'
-        floated='right' 
-        size='mini' 
-        onClick={() => {showNewTaskForm()}}
-      />
-      {ShowForm}
+        <Button
+          basic
+          icon={showForm ? 'chevron up' : 'plus'}
+          color={'blue'}
+          floated='right' 
+          size='mini' 
+          onClick={() => {showNewTaskForm()}}
+        />
+      </div>
+      {showForm}
       {saveSuccess ? successMessage : ''}
     </div>
   );

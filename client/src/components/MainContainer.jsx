@@ -10,7 +10,7 @@ import TaskList from './TaskList.jsx';
 import TaskListHeader from './TaskListHeader.jsx';
 
 // Import Semantic Components
-import { Container } from 'semantic-ui-react';
+import { Container, Divider } from 'semantic-ui-react';
 
 class MainContainer extends React.Component{
   constructor(props) {
@@ -21,6 +21,7 @@ class MainContainer extends React.Component{
     return (
       <Container text style={{ marginTop: '3em' }} >
         <TaskListHeader />
+        <Divider />
         <TaskList />
       </Container>
     );

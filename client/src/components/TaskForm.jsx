@@ -1,27 +1,57 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
-import { Container } from 'semantic-ui-react'
+import { Container, Input, Button, Card, Divider } from 'semantic-ui-react'
+
+function renderField() {
+  return (
+    <Input
+      transparent
+    />
+  );
+}
 
 function TaskForm({ handleSubmit, pristine, reset, submitting }) {
   return (
-    <Container text>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <Field
-            name="name"
-            component="input"
-            type="text"
-            placeholder="Task Name"
-          />
-        </div>
-        <div>
-          <button type="submit" disabled={pristine || submitting}>Submit</button>
-          <button type="button" disabled={pristine || submitting} onClick={reset}>
-            Clear
-          </button>
-        </div>
-      </form>
-    </Container>
+    <div style={{marginTop: '1.5rem'}}>
+      <Container text>
+        <Card.Group>
+          <Card fluid>
+            <Card.Content>
+              <Button
+                icon='checkmark'
+                floated='right'
+                color='green'
+                type="submit"
+                disabled={pristine || submitting}
+                onClick={handleSubmit}
+              />
+              <Button 
+                icon='erase'
+                floated='right'
+                color='red'
+                disabled={pristine || submitting} 
+                onClick={reset}
+              />
+              <Card.Header>
+                <form onSubmit={handleSubmit}>
+                  <div>
+                    <Field
+                      name='name'
+                      component={Input}
+                      className='ui transparent input'
+                      type='text'
+                      placeholder='Task Name'
+                    />
+                  </div>
+                </form>
+              </Card.Header>
+              <Card.Meta>
+            </Card.Meta>
+            </Card.Content>
+          </Card>
+        </Card.Group>
+      </Container>
+    </div>
   );
 };
 

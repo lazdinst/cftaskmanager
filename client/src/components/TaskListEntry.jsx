@@ -15,7 +15,9 @@ class TaskListEntry extends React.Component {
     return (
       <Card fluid>
         <Card.Content>
-          <Button 
+          <Button
+            basic
+            color='red'
             icon='trash outline'
             floated='right' 
             size='small'

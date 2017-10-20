@@ -1,5 +1,4 @@
 import axios from 'axios';
-axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 /** ============================================================
  * Define Actions
@@ -24,7 +23,7 @@ const initialState = {
     toggleTitleInput: false
   }
 };
-export let exportedState = Object.assign({}, initialState);
+export const exportedState = Object.assign({}, initialState);
 /** ============================================================
  * Define Reducer
  * ========================================================== */

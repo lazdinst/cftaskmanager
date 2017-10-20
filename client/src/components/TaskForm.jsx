@@ -17,20 +17,22 @@ function TaskForm({ handleSubmit, pristine, reset, submitting }) {
         <Card.Group>
           <Card fluid>
             <Card.Content>
+              <Button 
+                basic
+                icon='erase'
+                floated='right'
+                color='red'
+                disabled={pristine || submitting} 
+                onClick={reset}
+              />
               <Button
+                basic
                 icon='checkmark'
                 floated='right'
                 color='green'
                 type="submit"
                 disabled={pristine || submitting}
                 onClick={handleSubmit}
-              />
-              <Button 
-                icon='erase'
-                floated='right'
-                color='red'
-                disabled={pristine || submitting} 
-                onClick={reset}
               />
               <Card.Header>
                 <form onSubmit={handleSubmit}>

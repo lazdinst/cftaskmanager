@@ -22,7 +22,6 @@ let currentValue = select(store.getState());
 let handleChange= () => {
   let previousValue = currentValue;
   currentValue = select(store.getState());
-  console.log(currentValue);
   if (previousValue !== currentValue) {
     stateChanged = true;
   }

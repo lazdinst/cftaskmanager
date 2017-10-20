@@ -11,7 +11,9 @@ import {
   handleTitleChange } from '../store/modules/app';
   
 import TaskForm from './TaskForm.jsx';
-  
+import SuccessMessage from './SuccessMessage.jsx';
+import FailureMessage from './FailureMessage.jsx';
+
 import { RIEInput } from 'riek'
 import { Header, Button, Icon, Message, Divider } from 'semantic-ui-react';
 
@@ -34,7 +36,7 @@ const notificationMessage = () => {
   setTimeout(function(){ return  }, 1000);
 }
 
-function TaskListHeader({tasks, title, toggleForm, toggleTitleInput, postSuccess, handleTaskTitle, handleTitleChange, handleSubmit, showNewTaskForm, saveAllTasks}) {
+function TaskListHeader({tasks, title, toggleForm, toggleTitleInput, postSuccess, postFailure, handleTaskTitle, handleTitleChange, handleSubmit, showNewTaskForm, saveAllTasks}) {
   let showForm = toggleForm ? <TaskForm  onSubmit={handleSubmit}/> : '';
   let saveSuccess = false;
   let successMessage = <Message positive>All changes have been saved!</Message>;
@@ -71,7 +73,8 @@ function TaskListHeader({tasks, title, toggleForm, toggleTitleInput, postSuccess
         />
       </div>
       {showForm}
-      {saveSuccess ? successMessage : ''}
+      {postSuccess ? <SuccessMessage /> : ''}
+      {postFailure ? <FailureMessage />  : ''}
     </div>
   );
 }
@@ -81,7 +84,8 @@ const mapStateToProps = (state) => ({
   tasks: state.app.tasks,
   toggleForm: state.app.toggleForm,
   toggleTitleInput: state.app.toggleTitleInput,
-  postSuccess: state.app.postSuccess
+  postSuccess: state.app.postSuccess,
+  postFailure: state.app.postFailure
 });
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({

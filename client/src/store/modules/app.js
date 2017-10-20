@@ -43,7 +43,8 @@ export default (state = initialState, action) => {
   case SAVE_ALL_TASKS : 
     return {
       ...state,
-      postSuccess: !state.postSuccess
+      postSuccess: action.postSuccess,
+      postFailure: !action.postSuccess
     };
   case ADD_NEW_TASK:
     return {
@@ -101,7 +102,14 @@ export const saveAllTasks = (tasks, title) => {
       .then(results => {
         console.log('Post success');
         dispatch({
-          type: SAVE_ALL_TASKS
+          type: SAVE_ALL_TASKS,
+          postSuccess: true
+        });
+      })
+      .catch(()=>{
+        dispatch({
+          type: SAVE_ALL_TASKS,
+          postSuccess: false,
         });
       });
       

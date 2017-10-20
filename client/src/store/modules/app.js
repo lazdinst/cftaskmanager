@@ -9,17 +9,22 @@ export const SAVE_ALL_TASKS = 'SAVE_ALL_TASKS';
 export const TOGGLE_FORM_VISIBILITY = 'TOGGLE_FORM_VISIBILITY';
 export const ADD_NEW_TASK = 'ADD_NEW_TASK';
 export const DELETE_TASK = 'DELETE_TASK';
+export const SET_TASK_TITLE = 'SET_TASK_TITLE';
+export const TOGGLE_TASK_TITLE_INPUT = 'TOGGLE_TASK_TITLE_INPUT';
 
 /** ============================================================
  * Define Initial State
  * ========================================================== */
 const initialState = {
-  title: 'Tasks',
-  tasks: [],
-  nextTaskId: 0,
-  toggleForm: false
+  app: {
+    taskTitle: 'Tasks',
+    tasks: [],
+    nextTaskId: 0,
+    toggleForm: false,
+    toggleTitleInput: false
+  }
 };
-
+export let exportedState = Object.assign({}, initialState);
 /** ============================================================
  * Define Reducer
  * ========================================================== */
@@ -46,6 +51,16 @@ export default (state = initialState, action) => {
       ...state,
       tasks: [...state.tasks, action.task],
       toggleForm: !state.toggleForm
+    };
+  case TOGGLE_TASK_TITLE_INPUT: 
+    return {
+      ...state,
+      toggleTitleInput: !state.toggleTitleInput
+    };
+    case SET_TASK_TITLE : 
+    return {
+      ...state,
+      title: action.title
     };
   case TOGGLE_FORM_VISIBILITY:
     return {
@@ -75,9 +90,15 @@ export const getAllTasks = () => {
   };
 };
 
-export const saveAllTasks = (tasks) => {
+export const saveAllTasks = (tasks, title) => {
+  let data = {
+    tasks: {
+      tasks: tasks,
+      title: title
+    }
+  }
   return dispatch => {
-    return axios.post('http://cfassignment.herokuapp.com/talislazdins/tasks', {tasks: tasks || null})
+    return axios.post('http://cfassignment.herokuapp.com/talislazdins/tasks', data)
       .then(results => {
         console.log('Post success');
         dispatch({
@@ -92,6 +113,23 @@ export const showNewTaskForm = () => {
   return dispatch => {
     dispatch({
       type: TOGGLE_FORM_VISIBILITY
+    });
+  };
+};
+
+export const handleTaskTitle = () => {
+  return dispatch => {
+    dispatch({
+      type: TOGGLE_TASK_TITLE_INPUT
+    });
+  };
+};
+
+export const handleTitleChange = (title) => {
+  return dispatch => {
+    dispatch({
+      type: SET_TASK_TITLE,
+      title: title.title
     });
   };
 };

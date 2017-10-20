@@ -18,7 +18,8 @@ app.get('*', (req, res) => {
   console.log('preloading sate')
   axios.get('http://cfassignment.herokuapp.com/talislazdins/tasks')
     .then(results => {
-      let tasks = results.data.tasks || [];
+      preloadedState.app.title = results.data.tasks.title;
+      let tasks = results.data.tasks.tasks || [];
       preloadedState.app.tasks = tasks;
       let id = tasks.length ? tasks[0].id + 1 : 0;
       preloadedState.app.nextTaskId = id;

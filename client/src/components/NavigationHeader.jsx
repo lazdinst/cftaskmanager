@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, Menu, } from 'semantic-ui-react';
 
 // Define the main app class
-const NavigationHeader = () => {
+function NavigationHeader() {
   return (
     <div>
       <Menu fixed='top' inverted>

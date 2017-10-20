@@ -2,8 +2,7 @@ import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { Container } from 'semantic-ui-react'
 
-const TaskForm = props => {
-  const { handleSubmit, pristine, reset, submitting } = props;
+function TaskForm({ handleSubmit, pristine, reset, submitting }) {
   return (
     <Container text>
       <form onSubmit={handleSubmit}>

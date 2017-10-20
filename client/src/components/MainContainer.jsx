@@ -1,25 +1,25 @@
 import React from 'react';
-import { bindActionCreators } from 'redux';
+
+// Redux Store and Actions
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { getAllTasks } from '../store/modules/app';
 
+// Import Local Components
 import TaskList from './TaskList.jsx';
 import TaskListHeader from './TaskListHeader.jsx';
 
-import { Container, Header } from 'semantic-ui-react';
+// Import Semantic Components
+import { Container } from 'semantic-ui-react';
 
 class MainContainer extends React.Component{
   constructor(props) {
     super(props);
   }
 
-  componentWillMount() {
-    //this.props.getAllTasks();
-  }
-
   render() {
     return (
-      <Container text style={{ marginTop: '3em' }}>
+      <Container text style={{ marginTop: '3em' }} >
         <TaskListHeader />
         <TaskList />
       </Container>

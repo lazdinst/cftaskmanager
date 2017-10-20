@@ -15,15 +15,21 @@ class TaskListEntry extends React.Component {
     return (
       <Card fluid>
         <Card.Content>
-          Task id: {this.props.task.id}
-          Task Number: {this.props.taskNum || 'TASK_NUM'}
-          <Button floated='right' size='big' onClick={()=>{this.props.deleteTask(this.props.task.id)}}>
-            Delete
-          </Button>
+          <Button 
+            icon='trash outline'
+            floated='right' 
+            size='small'
+            onClick={()=>{this.props.deleteTask(this.props.task.id)}}
+          />
           <Card.Header>
             {this.props.task.name || 'TASK_NAME'}
           </Card.Header>
+
           <Card.Meta>
+            <span>
+              Task id: {this.props.task.id}
+              Task Number: {this.props.taskNum || 'TASK_NUM'}
+            </span>
             <span className='date'>
               {this.props.task.createdAt || 'CREATED_AT'}
             </span>

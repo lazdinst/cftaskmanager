@@ -6,13 +6,11 @@ import { Container, Input } from 'semantic-ui-react'
 
 import { handleTitleChange } from '../store/modules/app';
 
-const EditTaskTitle = ({ title, handleTitleChange }) => {
+function EditTaskTitle({ title, handleTitleChange }) {
   return (
-    <div>
-      <input onChange={(e) => {
-        handleTitleChange(e.target.value);
-      }} />
-    </div>
+    <input 
+      onChange={(e) => { handleTitleChange(e.target.value); }} 
+    />
   );
 };
 

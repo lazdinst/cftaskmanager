@@ -9,8 +9,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 app.set('view engine', 'ejs');
-app.set('views', path.resolve(__dirname, '../client/dist'));
-app.use(express.static(path.resolve(__dirname, '../client/dist')));
+app.set('views', path.resolve(__dirname, 'views'));
+app.use(express.static(path.resolve(__dirname, '../dist')));
 
 app.use('/api', express.Router()
 .use('/tasks', require('./routes/tasks'))

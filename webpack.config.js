@@ -1,27 +1,23 @@
-const path = require('path');
-
-const SRC_DIR = path.resolve(__dirname, 'client');
-const DST_DIR = path.resolve(__dirname, 'dist');
+var path = require('path');
+var SRC_DIR = path.join(__dirname, '/client');
+var DIST_DIR = path.join(__dirname, '/dist');
 
 module.exports = {
-  entry: './client/index.jsx',
-
+  entry: `${SRC_DIR}/index.jsx`,
   output: {
     filename: 'bundle.js',
-    path: path.resolve(DST_DIR, 'js'),
+    path: DIST_DIR
   },
-
-  resolve: {
-    extensions: ['.js', '.jsx'],
-  },
-
-  module: {
-    loaders: [
+  module : {
+    loaders : [
       {
-        test: /\.jsx?$/,
-        include: SRC_DIR,
-        loader: 'babel-loader',
-      },
-    ],
-  },
+        test : /\.jsx?/,
+        include : SRC_DIR,
+        loader : 'babel-loader',      
+        query: {
+          presets: ['react', 'es2015', 'stage-0']
+       }
+      }
+    ]
+  }
 };

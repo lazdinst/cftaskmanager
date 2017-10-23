@@ -12,7 +12,7 @@ import TaskListHeader from './TaskListHeader.jsx';
 // Import Semantic Components
 import { Container, Divider } from 'semantic-ui-react';
 
-class MainContainer extends React.Component{
+export class MainContainer extends React.Component{
   constructor(props) {
     super(props);
   }
@@ -36,7 +36,4 @@ const mapDispatchToProps = (dispatch) => bindActionCreators({
   getAllTasks
 }, dispatch);
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(MainContainer);
+export default connect( mapStateToProps, mapDispatchToProps)(MainContainer);

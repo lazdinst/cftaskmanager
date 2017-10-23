@@ -5,7 +5,7 @@ import NavigationHeader from './NavigationHeader.jsx';
 import MainContainer from './MainContainer.jsx';
 
 // Define the main app class
-const App = () => {
+export const App = () => {
   return (
     <div >
       <NavigationHeader />

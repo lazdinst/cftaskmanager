@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`>>>APP --- Snapshot +++capturing Snapshot of APP 1`] = `
+<div>
+  <div>
+    <div
+      className="ui inverted top fixed menu"
+    >
+      <div
+        className="ui container"
+      >
+        <a
+          className="header item"
+          onClick={[Function]}
+        >
+          CF Task Management App
+        </a>
+        <a
+          className="item"
+          onClick={[Function]}
+        >
+          Talis Lazdins
+        </a>
+      </div>
+    </div>
+  </div>
+  fuck you
+</div>
+`;

@@ -5,6 +5,8 @@ const app = express();
 const axios = require('axios');
 const axiosRetry = require('axios-retry'); 
 
+app.use(require('morgan')('dev'));
+
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 

@@ -1,19 +1,18 @@
 import * as constants from '../constants/app';
 import axios from 'axios';
+import store from '../../store';
 
 export const getAllTasks = () => {
-  return dispatch => {
-    return axios.get('http://cfassignment.herokuapp.com/talislazdins/tasks')
-      .then(results => {
-        let tasks = results.data.tasks || [];
-        let id = tasks.length ? tasks[tasks.length - 1].id + 1 : 0;
-        dispatch({
-          type: constants.GET_ALL_TASKS,
-          tasks: tasks,
-          nextTaskId: id
-        });
+  return axios.get('http://cfassignment.herokuapp.com/talislazdins/tasks')
+    .then(results => {
+      let tasks = results.data.tasks || [];
+      let id = tasks.length ? tasks[tasks.length - 1].id + 1 : 0;
+      dispatch({
+        type: constants.GET_ALL_TASKS,
+        tasks: tasks,
+        nextTaskId: id
       });
-  };
+    });
 };
 
 export const saveAllTasks = (tasks, title) => {
@@ -42,50 +41,29 @@ export const saveAllTasks = (tasks, title) => {
   };
 };
 
-export const showNewTaskForm = () => {
-  return dispatch => {
-    dispatch({
-      type: constants.TOGGLE_FORM_VISIBILITY
-    });
-  };
-};
+export const showNewTaskForm = () => ({
+  type: constants.TOGGLE_FORM_VISIBILITY
+});
 
-export const handleTaskTitle = () => {
-  return dispatch => {
-    dispatch({
-      type: constants.TOGGLE_TASK_TITLE_INPUT
-    });
-  };
-};
+export const handleTaskTitle = () => ({
+  type: constants.TOGGLE_TASK_TITLE_INPUT
+});
 
-export const handleTitleChange = (title) => {
-  return dispatch => {
-    dispatch({
-      type: constants.SET_TASK_TITLE,
-      title: title.title
-    });
-  };
-};
+export const handleTitleChange = (title) => ({
+  type: constants.SET_TASK_TITLE,
+  title: title.title
+});
 
-export const handleSubmit = (values) => {
-  return (dispatch, getState) => {
-    dispatch({
-      type: constants.ADD_NEW_TASK,
-      task: {
-        id: getState().app.nextTaskId++,
-        name: values.name,
-        createdAt: new Date().toISOString()
-      }
-    });
-  };
-};
+export const handleSubmit = (values) => ({
+  type: constants.ADD_NEW_TASK,
+  task: {
+    id: store.getState().app.nextTaskId++,
+    name: values.name,
+    createdAt: new Date().toISOString()
+  }
+});
 
-export const deleteTask = (id) => {
-  console.log('Task ID', id);
-  return dispatch => {
-    dispatch({
-      type: constants.DELETE_TASK,
-      id: id
-    });
-  };
-};
+export const deleteTask = (id) => ({
+  type: constants.DELETE_TASK,
+  id: id
+});

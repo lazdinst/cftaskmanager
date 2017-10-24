@@ -1,8 +1,8 @@
 const { getAllTasks } = require('../../client/store/actions/app');
+console.log(getAllTasks());
 
 const app = require('../../server/app');
 const supertest = require('supertest');
-const request = require('request');
 const req = supertest.agent(app);
 
 describe('Server', () => {

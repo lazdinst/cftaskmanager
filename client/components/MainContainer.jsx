@@ -7,7 +7,7 @@ import { Container, Divider } from 'semantic-ui-react';
 
 function MainContainer() {
   return (
-    <Container text style={{ marginTop: '3em' }} >
+    <Container text style={{ marginTop: '4em' }} >
       <TaskListHeader />
       <Divider />
       <TaskList />

@@ -30,17 +30,11 @@ let handleChange= () => {
 }
 store.subscribe(handleChange);
 
-
-const notificationMessage = () => {
-  console.log('timeing out')
-  setTimeout(function(){ return  }, 1000);
-}
-
 function TaskListHeader({tasks, title, toggleForm, toggleTitleInput, postSuccess, postFailure, handleTaskTitle, handleTitleChange, handleSubmit, showNewTaskForm, saveAllTasks}) {
   let showForm = toggleForm ? <TaskForm  onSubmit={handleSubmit}/> : '';
   let saveSuccess = false;
   let successMessage = <Message positive>All changes have been saved!</Message>;
-  
+
   return (
     <div>
       <div>
@@ -71,9 +65,9 @@ function TaskListHeader({tasks, title, toggleForm, toggleTitleInput, postSuccess
           onClick={() => {showNewTaskForm()}}
         />
       </div>
-      {showForm}
       {postSuccess ? <SuccessMessage /> : ''}
       {postFailure ? <FailureMessage />  : ''}
+      {showForm}
     </div>
   );
 }

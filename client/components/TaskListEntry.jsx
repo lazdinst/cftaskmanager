@@ -50,7 +50,4 @@ const mapDispatchToProps = (dispatch) => bindActionCreators({
   deleteTask
 }, dispatch);
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(TaskListEntry);
+export default connect(mapStateToProps, mapDispatchToProps)(TaskListEntry);

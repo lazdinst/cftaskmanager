@@ -57,6 +57,4 @@ function TaskForm({ handleSubmit, pristine, reset, submitting }) {
   );
 };
 
-export default reduxForm({
-  form: 'crowdfund',
-})(TaskForm);
+export default reduxForm({ form: 'crowdfund' })(TaskForm); 

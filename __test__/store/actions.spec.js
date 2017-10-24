@@ -1,3 +1,5 @@
+const { getAllTasks } = require('../../client/store/actions/app');
+
 const app = require('../../server/app');
 const supertest = require('supertest');
 const request = require('request');

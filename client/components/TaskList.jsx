@@ -23,11 +23,6 @@ const mapStateToProps = (state) => ({
   tasks: state.app.tasks,
 });
 
-const mapDispatchToProps = (dispatch) => bindActionCreators({
-  deleteTask
-}, dispatch);
+const mapDispatchToProps = (dispatch) => bindActionCreators({ deleteTask }, dispatch);
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(TaskList);
+export default connect( mapStateToProps, mapDispatchToProps)(TaskList);

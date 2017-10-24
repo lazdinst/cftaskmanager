@@ -6,7 +6,7 @@ import { exportedState } from './reducers/app';
 let mergedObj = {};
 mergedObj.app = { ...exportedState.app, ...window.__PRELOADED_STATE__.app };
 const initialState = mergedObj;
-
+// const initialState = {};
 const enhancers = [];
 const middleware = [thunk];
 

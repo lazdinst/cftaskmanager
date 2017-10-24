@@ -1,7 +1,6 @@
 import React from 'react';
 import { Container, Menu, } from 'semantic-ui-react';
 
-// Define the main app class
 function NavigationHeader() {
   return (
     <div>

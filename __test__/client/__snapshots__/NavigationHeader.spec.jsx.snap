@@ -10,13 +10,52 @@ exports[`<NavigationHeader /> should render 1`] = `
       <MenuItem
         as="a"
         header={true}
+        href="https://www.crowdflower.com/"
       >
-        CF Task Management App
+        <Image
+          as="img"
+          src="https://i.imgur.com/H0eBIzy.png?1"
+          style={
+            Object {
+              "width": "24px",
+            }
+          }
+          ui={true}
+        />
       </MenuItem>
       <MenuItem
         as="a"
+        href="https://www.google.com/search?q=Talis+Lazdins"
       >
         Talis Lazdins
+      </MenuItem>
+      <MenuItem
+        as="a"
+        href="https://www.linkedin.com/in/talis-lazdins/"
+      >
+        <Icon
+          as="i"
+          name="linkedin"
+        />
+      </MenuItem>
+      <MenuItem
+        as="a"
+        href="https://github.com/lazdinst/"
+      >
+        <Icon
+          as="i"
+          name="github"
+        />
+      </MenuItem>
+      <MenuItem
+        alt="Talis Lazdins Resume"
+        as="a"
+        href="https://drive.google.com/file/d/0B-jIfLD_IMykOV9SN09JdmRZZlk/view?usp=sharing"
+      >
+        <Icon
+          as="i"
+          name="address card outline"
+        />
       </MenuItem>
     </Container>
   </Menu>

@@ -4,7 +4,7 @@ exports[`<MainContainer /> should render 1`] = `
 <Container
   style={
     Object {
-      "marginTop": "3em",
+      "marginTop": "4em",
     }
   }
   text={true}

@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import reducers from './reducers';
-import { exportedState } from './modules/app';
+import { exportedState } from './reducers/app';
 
 let mergedObj = {};
 mergedObj.app = { ...exportedState.app, ...window.__PRELOADED_STATE__.app };

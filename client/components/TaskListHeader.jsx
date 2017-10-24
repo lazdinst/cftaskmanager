@@ -8,7 +8,7 @@ import {
   saveAllTasks,
   handleSubmit, 
   handleTaskTitle, 
-  handleTitleChange } from '../store/modules/app';
+  handleTitleChange } from '../store/actions/app';
   
 import TaskForm from './TaskForm.jsx';
 import SuccessMessage from './SuccessMessage.jsx';
@@ -40,8 +40,7 @@ function TaskListHeader({tasks, title, toggleForm, toggleTitleInput, postSuccess
   let showForm = toggleForm ? <TaskForm  onSubmit={handleSubmit}/> : '';
   let saveSuccess = false;
   let successMessage = <Message positive>All changes have been saved!</Message>;
-  //postSuccess ? setTimeout(() => {console.log('After timer')}, 2000) : console.log('No Timer');
-
+  
   return (
     <div>
       <div>

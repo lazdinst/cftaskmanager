@@ -3,7 +3,6 @@ import React from 'react';
 // Redux Store and Actions
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { getAllTasks } from '../store/modules/app';
 
 // Import Local Components
 import TaskList from './TaskList.jsx';
@@ -32,8 +31,4 @@ const mapStateToProps = (state) => ({
   tasks: state.tasks,
 });
 
-const mapDispatchToProps = (dispatch) => bindActionCreators({
-  getAllTasks
-}, dispatch);
-
-export default connect( mapStateToProps, mapDispatchToProps)(MainContainer);
+export default connect( mapStateToProps)(MainContainer);

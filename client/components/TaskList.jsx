@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { deleteTask } from '../store/modules/app';
+import { deleteTask } from '../store/actions/app';
 
 import TaskListEntry from './TaskListEntry.jsx';
 

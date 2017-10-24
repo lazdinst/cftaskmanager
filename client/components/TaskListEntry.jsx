@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import { Button, Card, Label } from 'semantic-ui-react'
 
-import { deleteTask } from '../store/modules/app';
+import { deleteTask } from '../store/actions/app';
 
 class TaskListEntry extends React.Component {
   constructor(props) {

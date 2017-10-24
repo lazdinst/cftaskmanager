@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { deleteTask } from '../store/actions/app';
+import { deleteTask, updateTaskName } from '../store/actions/app';
 import { Button, Card, Label, Input } from 'semantic-ui-react'
 import { RIEInput } from 'riek'
 
@@ -16,9 +16,18 @@ class TaskListEntry extends React.Component {
       visible: !this.state.visible
     });
   }
+  handleKeyPress(event) {
+    if (event.key === 'Enter') {
+      this.handleEditButton();
+    }
+  }
+
+  handleChange(e) {
+    this.props.updateTaskName(this.props.task.id, e.target.value);
+  }
 
   render() {
-    const editTaskName = <div className='ui transparent input'><h3><RIEInput value={this.props.task.name || 'TASK_TITLE'} change={this.handleEditButton} propName={`title`}/></h3></div>; 
+    const editTaskName = <div className='ui transparent focus fluid input'><input value={this.props.task.name} onChange={this.handleChange.bind(this)} onKeyPress={this.handleKeyPress.bind(this)} /></div>; 
     return (
       <Card fluid>
         <Card.Content>
@@ -33,14 +42,13 @@ class TaskListEntry extends React.Component {
           <Button
             basic
             color='green'
-            icon='pencil'
+            icon={ this.state.visible ? 'checkmark' : 'pencil'}
             floated='right' 
             size='small'
             onClick={this.handleEditButton.bind(this)}
           />
           <Card.Header>
-            {this.state.visible ? editTaskName : ''}
-            {this.props.task.name || 'TASK_NAME'}
+            {this.state.visible ? editTaskName : this.props.task.name}
           </Card.Header>
           <Card.Meta>
             <span>
@@ -62,7 +70,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  deleteTask
+  deleteTask,
+  updateTaskName
 }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(TaskListEntry);

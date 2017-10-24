@@ -54,7 +54,7 @@ export default (state = initialState, action) => {
   case constants.UPDATE_TASK_NAME: 
     return { 
       ...state, 
-      tasks: state.tasks.map((content, i) => i === action.index ? {...content, name: action.name} : content)
+      tasks: state.tasks.map((task) => task.id === action.id ? {...task, name: action.name} : task)
     }
   case constants.TOGGLE_FORM_VISIBILITY:
     return {

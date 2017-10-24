@@ -63,9 +63,9 @@ export const handleSubmit = (values) => ({
   }
 });
 
-export const updateTaskName = (index, name) => ({
+export const updateTaskName = (id, name) => ({
   type: constants.UPDATE_TASK_NAME,
-  index: index,
+  id: id,
   name: name
 });
 

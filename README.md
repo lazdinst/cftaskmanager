@@ -2,8 +2,7 @@
 [![Build Status](https://travis-ci.org/lazdinst/cftaskmanager.svg?branch=master)](https://travis-ci.org/lazdinst/cftaskmanager)
 
 ## Purpose
-React Coding Challenge - Task Managment App
-This application was built with React and Redux
+React / Redux Coding Challenge - Task Managment App
 
 ## UI Interactions
 User Interface requires by feature
@@ -31,7 +30,7 @@ deleted, or updated)
 ```javascript
 yarn
 yarn run build
-yarn run server
+yarn run start
 ```
 # Testing
 ```javascript

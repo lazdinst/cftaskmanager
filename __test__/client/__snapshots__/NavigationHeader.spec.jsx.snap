@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NavigationHeader /> should render 1`] = `
+<div>
+  <Menu
+    fixed="top"
+    inverted={true}
+  >
+    <Container>
+      <MenuItem
+        as="a"
+        header={true}
+      >
+        CF Task Management App
+      </MenuItem>
+      <MenuItem
+        as="a"
+      >
+        Talis Lazdins
+      </MenuItem>
+    </Container>
+  </Menu>
+</div>
+`;

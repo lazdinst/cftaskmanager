@@ -2,14 +2,6 @@ import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { Container, Input, Button, Card, Divider } from 'semantic-ui-react'
 
-function renderField() {
-  return (
-    <Input
-      transparent
-    />
-  );
-}
-
 function TaskForm({ handleSubmit, pristine, reset, submitting }) {
   return (
     <div style={{marginTop: '1.5rem'}}>
@@ -56,5 +48,13 @@ function TaskForm({ handleSubmit, pristine, reset, submitting }) {
     </div>
   );
 };
+
+function renderField() {
+  return (
+    <Input
+      transparent
+    />
+  );
+}
 
 export default reduxForm({ form: 'crowdfund' })(TaskForm); 

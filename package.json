@@ -7,8 +7,8 @@
     "test": "tests"
   },
   "scripts": {
-    "react-dev": "webpack -d --watch",
-    "server": "nodemon server/index.js",
+    "build": "webpack -d --watch",
+    "start": "nodemon server/index.js",
     "test": "jest",
     "lint": "eslint ."
   },

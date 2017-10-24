@@ -72,7 +72,7 @@ function TaskListHeader({tasks, title, toggleForm, toggleTitleInput, postSuccess
   );
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   title: state.app.title,
   tasks: state.app.tasks,
   toggleForm: state.app.toggleForm,
@@ -81,7 +81,7 @@ const mapStateToProps = (state) => ({
   postFailure: state.app.postFailure
 });
 
-const mapDispatchToProps = (dispatch) => bindActionCreators({
+const mapDispatchToProps = dispatch => bindActionCreators({
   showNewTaskForm,
   saveAllTasks,
   handleSubmit,
@@ -89,7 +89,4 @@ const mapDispatchToProps = (dispatch) => bindActionCreators({
   handleTitleChange,
 }, dispatch);
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(TaskListHeader);
+export default connect(mapStateToProps, mapDispatchToProps)(TaskListHeader);

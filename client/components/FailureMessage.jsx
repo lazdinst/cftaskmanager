@@ -15,7 +15,7 @@ class FailureMessage extends Component {
           negative
           onDismiss={this.handleDismiss}
           header='Oh No! Something went Wrong'
-          content='Looks like we there was a problem posting the messsage to the server! Please try again!'
+          content='Looks like we there was a problem saving the tasks to the server! Please try again!'
         />
       )
     }

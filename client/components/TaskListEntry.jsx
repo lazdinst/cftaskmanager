@@ -1,10 +1,8 @@
 import React from 'react';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-
-import { Button, Card, Label } from 'semantic-ui-react'
-
+import { bindActionCreators } from 'redux';
 import { deleteTask } from '../store/actions/app';
+import { Button, Card, Label } from 'semantic-ui-react'
 
 class TaskListEntry extends React.Component {
   constructor(props) {
@@ -26,7 +24,6 @@ class TaskListEntry extends React.Component {
           <Card.Header>
             {this.props.task.name || 'TASK_NAME'}
           </Card.Header>
-
           <Card.Meta>
             <span>
               Task id: {this.props.task.id}
@@ -42,11 +39,11 @@ class TaskListEntry extends React.Component {
   }
 } 
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   tasks: state.app.tasks,
 });
 
-const mapDispatchToProps = (dispatch) => bindActionCreators({
+const mapDispatchToProps = dispatch => bindActionCreators({
   deleteTask
 }, dispatch);
 

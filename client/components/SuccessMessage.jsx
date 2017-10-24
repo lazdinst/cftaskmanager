@@ -1,16 +1,26 @@
-import React, { Component } from 'react'
+import React from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { Message } from 'semantic-ui-react'
 
-class SuccessMessage extends Component {
-  state = { visible: true }
+import { toggleSuccess } from '../store/actions/app';
+
+class SuccessMessage extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = { visible: true }
+
+  }
 
   handleDismiss = () => {
-    this.setState({ visible: false })
+    this.setState({ visible: false });
+    this.props.toggleSuccess();
   }
 
   componentDidMount() {
     setTimeout(() => {
-      this.setState({ visible: false })
+      this.setState({ visible: false });
+      this.props.toggleSuccess();
     }, 3000)
   }
 
@@ -32,4 +42,10 @@ class SuccessMessage extends Component {
   }
 }
 
-export default SuccessMessage;
+const mapStateToProps = (state) => ({
+  tasks: state.app.tasks,
+});
+
+const mapDispatchToProps = (dispatch) => bindActionCreators({ toggleSuccess }, dispatch);
+
+export default connect( mapStateToProps, mapDispatchToProps)(SuccessMessage);

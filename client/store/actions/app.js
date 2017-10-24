@@ -67,3 +67,7 @@ export const deleteTask = (id) => ({
   type: constants.DELETE_TASK,
   id: id
 });
+
+export const toggleSuccess = () => ({
+  type: constants.SET_POST_SUCCESS,
+});

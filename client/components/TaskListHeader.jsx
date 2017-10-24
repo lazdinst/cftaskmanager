@@ -32,8 +32,6 @@ store.subscribe(handleChange);
 
 function TaskListHeader({tasks, title, toggleForm, toggleTitleInput, postSuccess, postFailure, handleTaskTitle, handleTitleChange, handleSubmit, showNewTaskForm, saveAllTasks}) {
   let showForm = toggleForm ? <TaskForm  onSubmit={handleSubmit}/> : '';
-  let saveSuccess = false;
-  let successMessage = <Message positive>All changes have been saved!</Message>;
 
   return (
     <div>

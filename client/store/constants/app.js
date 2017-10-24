@@ -5,3 +5,4 @@ export const ADD_NEW_TASK = 'ADD_NEW_TASK';
 export const DELETE_TASK = 'DELETE_TASK';
 export const SET_TASK_TITLE = 'SET_TASK_TITLE';
 export const TOGGLE_TASK_TITLE_INPUT = 'TOGGLE_TASK_TITLE_INPUT';
+export const SET_POST_SUCCESS = 'SET_POST_SUCCESS';

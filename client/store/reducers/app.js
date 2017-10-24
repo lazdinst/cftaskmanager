@@ -56,6 +56,11 @@ export default (state = initialState, action) => {
       ...state,
       toggleForm: !state.toggleForm
     };
+  case constants.SET_POST_SUCCESS:
+    return {
+      ...state,
+      postSuccess: !state.postSuccess
+    };
   default:
     return state;
   }

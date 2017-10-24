@@ -9,4 +9,3 @@ cache:
     - "node_modules"
 
 script:
-  - "yarn run test"

@@ -27,6 +27,7 @@ class TaskListEntry extends React.Component {
   }
 
   render() {
+    //TODO: Refactor
     const editTaskName = <div className='ui transparent focus fluid input'><input value={this.props.task.name} onChange={this.handleChange.bind(this)} onKeyPress={this.handleKeyPress.bind(this)} /></div>; 
     const date = this.props.task.createdAt.toString().substring(0, 10) 
     return (

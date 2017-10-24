@@ -21,7 +21,6 @@ router.get('/', (req, res) => {
       res.render('index', {preloadedState});
     })
     .catch((err) => {
-      console.log('FAILED TO INJECT PRELOADED STATE');
       preloadedState.app.injectedState = false;
       res.render('index', {preloadedState});
     });
@@ -31,11 +30,9 @@ router.post('/', (req, res) => {
   const data = req.body;
   axios.post('http://cfassignment.herokuapp.com/talislazdins/tasks', data)
   .then(results => {
-    console.log('SERVER: Post success');
     res.end();
   })
   .catch((err)=>{
-    console.log('SERVER: POST ERROR');
     res.end();
   });
 });

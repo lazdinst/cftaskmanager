@@ -17,7 +17,18 @@ class FailureMessage extends React.Component {
   }
 
   render() {
-    if (this.state.visible) {
+    console.log(this.props)
+    if (!this.props.injectedState) {
+      return (
+        <Message negative>
+          <Message.Header>Oh no! Failed to Inject Pre-loaded State</Message.Header>
+          <Message.List>
+            <Message.Item>We had trouble loading the data from the server. Please refresh or try again later</Message.Item>
+            <Message.Item>Warning! If any changes are saved, your previous task list will be over written</Message.Item>
+          </Message.List>
+        </Message>
+      )
+    } else if (this.state.visible) {
       return (
         <Message
           negative
@@ -26,15 +37,17 @@ class FailureMessage extends React.Component {
           content='Looks like we there was a problem saving the tasks to the server! Please try again!'
         />
       )
+    } else {
+      return (
+        <div>
+        </div>
+      )
     }
-
-    return (
-      <div>
-      </div>
-    )
   }
 }
-
+const mapStateToProps = state => ({
+  injectedState: state.app.injectedState,
+});
 const mapDispatchToProps = dispatch => bindActionCreators({ toggleFailure }, dispatch);
 
-export default connect(mapDispatchToProps)(FailureMessage);
+export default connect(mapStateToProps, mapDispatchToProps)(FailureMessage);

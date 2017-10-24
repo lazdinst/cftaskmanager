@@ -30,7 +30,7 @@ let handleChange= () => {
 }
 store.subscribe(handleChange);
 
-export function TaskListHeader({tasks, title, toggleForm, toggleTitleInput, postSuccess, postFailure, handleTaskTitle, handleTitleChange, handleSubmit, showNewTaskForm, saveAllTasks}) {
+export function TaskListHeader({injectedState, tasks, title, toggleForm, toggleTitleInput, postSuccess, postFailure, handleTaskTitle, handleTitleChange, handleSubmit, showNewTaskForm, saveAllTasks}) {
   let showForm = toggleForm ? <TaskForm  onSubmit={handleSubmit}/> : '';
 
   return (
@@ -63,6 +63,7 @@ export function TaskListHeader({tasks, title, toggleForm, toggleTitleInput, post
           onClick={showNewTaskForm}
         />
       </div>
+      {injectedState ? '' : <FailureMessage />}
       {postSuccess ? <SuccessMessage /> : ''}
       {postFailure ? <FailureMessage />  : ''}
       {showForm}
@@ -76,7 +77,8 @@ const mapStateToProps = state => ({
   toggleForm: state.app.toggleForm,
   toggleTitleInput: state.app.toggleTitleInput,
   postSuccess: state.app.postSuccess,
-  postFailure: state.app.postFailure
+  postFailure: state.app.postFailure,
+  injectedState: state.app.injectedState
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({

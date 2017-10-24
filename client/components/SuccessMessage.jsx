@@ -9,7 +9,6 @@ class SuccessMessage extends React.Component {
   constructor(props){
     super(props);
     this.state = { visible: true }
-
   }
 
   handleDismiss = () => {
@@ -41,11 +40,10 @@ class SuccessMessage extends React.Component {
     )
   }
 }
-
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   tasks: state.app.tasks,
 });
 
-const mapDispatchToProps = (dispatch) => bindActionCreators({ toggleSuccess }, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators({toggleSuccess}, dispatch);
 
-export default connect( mapStateToProps, mapDispatchToProps)(SuccessMessage);
+export default connect(mapStateToProps, mapDispatchToProps)(SuccessMessage);

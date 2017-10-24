@@ -1,11 +1,19 @@
-import React, { Component } from 'react'
+import React from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { Message } from 'semantic-ui-react'
 
-class FailureMessage extends Component {
-  state = { visible: true }
+import { toggleFailure } from '../store/actions/app';
+
+class FailureMessage extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = { visible: true }
+  }
 
   handleDismiss = () => {
     this.setState({ visible: false })
+    this.props.toggleFailure();
   }
 
   render() {
@@ -27,4 +35,6 @@ class FailureMessage extends Component {
   }
 }
 
-export default FailureMessage;
+const mapDispatchToProps = dispatch => bindActionCreators({ toggleFailure }, dispatch);
+
+export default connect(mapDispatchToProps)(FailureMessage);

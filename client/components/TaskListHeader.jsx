@@ -30,7 +30,7 @@ let handleChange= () => {
 }
 store.subscribe(handleChange);
 
-function TaskListHeader({tasks, title, toggleForm, toggleTitleInput, postSuccess, postFailure, handleTaskTitle, handleTitleChange, handleSubmit, showNewTaskForm, saveAllTasks}) {
+export function TaskListHeader({tasks, title, toggleForm, toggleTitleInput, postSuccess, postFailure, handleTaskTitle, handleTitleChange, handleSubmit, showNewTaskForm, saveAllTasks}) {
   let showForm = toggleForm ? <TaskForm  onSubmit={handleSubmit}/> : '';
 
   return (
@@ -60,7 +60,7 @@ function TaskListHeader({tasks, title, toggleForm, toggleTitleInput, postSuccess
           color={'blue'}
           floated='right' 
           size='mini' 
-          onClick={() => {showNewTaskForm()}}
+          onClick={showNewTaskForm}
         />
       </div>
       {postSuccess ? <SuccessMessage /> : ''}

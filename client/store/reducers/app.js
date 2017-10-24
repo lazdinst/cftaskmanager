@@ -61,6 +61,11 @@ export default (state = initialState, action) => {
       ...state,
       postSuccess: !state.postSuccess
     };
+  case constants.SET_POST_FAILURE:
+    return {
+      ...state,
+      postFailure: !state.postFailure
+    };
   default:
     return state;
   }

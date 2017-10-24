@@ -5,7 +5,7 @@
 React / Redux Coding Challenge - Task Managment App
 
 ## UI Interactions
-User Interface requires by feature
+User Interface requirements by feature
 
 ### Tasks
 1. Render ordered list of tasks. Load the list when the app starts.

@@ -46,11 +46,16 @@ export default (state = initialState, action) => {
       ...state,
       toggleTitleInput: !state.toggleTitleInput
     };
-    case constants.SET_TASK_TITLE : 
+  case constants.SET_TASK_TITLE : 
     return {
       ...state,
       title: action.title
     };
+  case constants.UPDATE_TASK_NAME: 
+    return { 
+      ...state, 
+      tasks: state.tasks.map((content, i) => i === action.index ? {...content, name: action.name} : content)
+    }
   case constants.TOGGLE_FORM_VISIBILITY:
     return {
       ...state,

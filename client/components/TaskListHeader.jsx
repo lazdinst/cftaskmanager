@@ -17,7 +17,7 @@ import FailureMessage from './FailureMessage.jsx';
 import { RIEInput } from 'riek'
 import { Header, Button, Icon, Message, Divider } from 'semantic-ui-react';
 
-// TODO: Refactor out of this component
+// TODO: Refactor out of this component, Add Monitor to Title
 let select = state => (state.app.tasks)
 let stateChanged = false;
 let currentValue = select(store.getState());

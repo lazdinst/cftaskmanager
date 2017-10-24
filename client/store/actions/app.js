@@ -63,6 +63,12 @@ export const handleSubmit = (values) => ({
   }
 });
 
+export const updateTaskName = (index, name) => ({
+  type: constants.UPDATE_TASK_NAME,
+  index: index,
+  name: name
+});
+
 export const deleteTask = (id) => ({
   type: constants.DELETE_TASK,
   id: id

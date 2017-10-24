@@ -1,6 +1,10 @@
 # cftaskmanager
 React Coding Challenge - Task Managment App
 
+# Travis.CI
+
+[![Build Status](https://travis-ci.org/lazdinst/cftaskmanager.svg?branch=master)](https://travis-ci.org/lazdinst/cftaskmanager)
+
 # Task List
   Render ordered list of tasks. Load the list when the app starts.
 

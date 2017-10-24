@@ -1,31 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<App /> should render 1`] = `undefined`;
-
-exports[`>>>APP --- Snapshot +++capturing Snapshot of APP 1`] = `
+exports[`<App /> should render 1`] = `
 <div>
-  <div>
-    <div
-      className="ui inverted top fixed menu"
-    >
-      <div
-        className="ui container"
-      >
-        <a
-          className="header item"
-          onClick={[Function]}
-        >
-          CF Task Management App
-        </a>
-        <a
-          className="item"
-          onClick={[Function]}
-        >
-          Talis Lazdins
-        </a>
-      </div>
-    </div>
-  </div>
-  fuck you
+  <NavigationHeader />
+  <Connect(MainContainer) />
 </div>
 `;

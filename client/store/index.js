@@ -2,11 +2,12 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import reducers from './reducers';
 import { exportedState } from './reducers/app';
+const preloadedState = window.__PRELOADED_STATE__ || {};
 
 let mergedObj = {};
-mergedObj.app = { ...exportedState.app, ...window.__PRELOADED_STATE__.app };
+mergedObj.app = { ...exportedState.app, ...preloadedState.app};
 const initialState = mergedObj;
-// const initialState = {};
+
 const enhancers = [];
 const middleware = [thunk];
 

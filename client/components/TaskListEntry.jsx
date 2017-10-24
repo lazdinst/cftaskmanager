@@ -28,6 +28,7 @@ class TaskListEntry extends React.Component {
 
   render() {
     const editTaskName = <div className='ui transparent focus fluid input'><input value={this.props.task.name} onChange={this.handleChange.bind(this)} onKeyPress={this.handleKeyPress.bind(this)} /></div>; 
+    const date = this.props.task.createdAt.toString().substring(0, 10) 
     return (
       <Card fluid>
         <Card.Content>
@@ -51,12 +52,8 @@ class TaskListEntry extends React.Component {
             {this.state.visible ? editTaskName : this.props.task.name}
           </Card.Header>
           <Card.Meta>
-            <span>
-              Task id: {this.props.task.id}
-              Task Number: {this.props.taskNum || 'TASK_NUM'}
-            </span>
             <span className='date'>
-              {this.props.task.createdAt || 'CREATED_AT'}
+              {date || 'CREATED_AT'}
             </span>
         </Card.Meta>
         </Card.Content>

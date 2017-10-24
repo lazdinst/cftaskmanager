@@ -3,7 +3,7 @@ import axios from 'axios';
 import store from '../../store';
 
 export const getAllTasks = () => {
-  return axios.get('http://cfassignment.herokuapp.com/talislazdins/tasks')
+  return axios.get('/api/tasks')
     .then(results => {
       let tasks = results.data.tasks || [];
       let id = tasks.length ? tasks[tasks.length - 1].id + 1 : 0;
@@ -23,7 +23,7 @@ export const saveAllTasks = (tasks, title) => {
     }
   }
   return dispatch => {
-    return axios.post('http://cfassignment.herokuapp.com/talislazdins/tasks', data)
+    return axios.post('/api/tasks', data)
       .then(results => {
         console.log('Post success');
         dispatch({

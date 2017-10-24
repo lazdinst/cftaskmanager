@@ -16,7 +16,7 @@ app.use('/api', express.Router()
 .use('/tasks', require('./routes/tasks'))
 );
 
-app.get('*', (req, res) => {
+app.get('/', (req, res) => {
   const preloadedState = {};
   preloadedState.app = {};
   axiosRetry(axios, { retries: 3 });

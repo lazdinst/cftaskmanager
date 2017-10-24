@@ -28,15 +28,13 @@ function TaskForm({ handleSubmit, pristine, reset, submitting }) {
               />
               <Card.Header>
                 <form onSubmit={handleSubmit}>
-                  <div>
-                    <Field
-                      name='name'
-                      component={Input}
-                      className='ui transparent input'
-                      type='text'
-                      placeholder='Task Name'
-                    />
-                  </div>
+                  <Field
+                    name='name'
+                    component={Input}
+                    className='ui transparent fluid input'
+                    type='text'
+                    placeholder='Task Name'
+                  />
                 </form>
               </Card.Header>
               <Card.Meta>

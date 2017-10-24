@@ -32,7 +32,7 @@ yarn
 yarn run build
 yarn run start
 ```
-⋅⋅* http://localhost:8080/
+http://localhost:8080/
 
 # Testing
 ```javascript
